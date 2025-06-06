@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turf Booking</title>
+  <style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.booking-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.booking-input label {
+    font-weight: bold;
+}
+
+.booking-input input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-option input {
+    margin: 0;
+}</style>
+
+</head>
+
+<body>
+
+
+
+    <h1>Book Your Turf</h1>
+    <div class="booking-form">
+        <div class="booking-input">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date">
+        </div>
+        <div class="booking-input">
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" name="time">
+        </div>
+        <div class="booking-input">
+            <label for="players">Number of Players:</label>
+            <input type="number" id="players" name="players" min="1">
+        </div>
+        <button type="submit">Confirm Booking</button>
+    </div>
+
+
+    <div class="container">
+        <style>
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+    
+            .rate {
+                float: left;
+                height: 46px;
+                padding: 0 10px;
+            }
+    
+            .rate:not(:checked) > input {
+                position:absolute;
+                top:-9999px;
+            }
+    
+            .rate:not(:checked) > label {
+                float:right;
+                width:1em;
+                overflow:hidden;
+                white-space:nowrap;
+                cursor:pointer;
+                font-size:30px;
+                color:#ccc;
+            }
+    
+            .rate > input:checked ~ label {
+                color: #ffc700;
+            }
+    
+            .rate:hover > input:checked ~ label {
+                color: #ffc700;
+            }
+    
+            .stars label:hover,
+            .stars label:hover ~ label {
+                color: #ffc700;
+            }
+    
+            .review {
+                clear: both;
+                width: 100%;
+                margin-top: 20px;
+            }
+    
+            .review textarea {
+                width: 100%;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                background-color: #f8f8f8;
+                resize: none;
+            }
+    
+            .review button {
+                display: block;
+                width: 100%;
+                padding: 12px 20px;
+                margin: 15px 0 0;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+        </style>
+        <div class="rate">
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="text">★</label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="text">★</label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="text">★</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">★</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">★</label>
+        </div>
+        <div class="review">
+            <textarea id="review" name="review" rows="4" cols="50" placeholder="Write your review here..."></textarea>
+            <button type="submit">Submit Review</button>
+        </div>
+    </div>
+</body>
+    <div class="payment-options">
+        <h2>Payment Options</h2>
+        <div class="payment-option">
+            <input type="radio" id="credit" name="payment" checked>
+            <label for="credit">Credit Card</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="debit" name="payment">
+            <label for="debit">Debit Card</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="netbanking" name="payment">
+            <label for="netbanking">Net Banking</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="cash" name="payment">
+            <label for="cash">Cash</label>
+        </div>
+    </div>
+</body>
+
+</html>

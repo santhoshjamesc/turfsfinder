@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+          
+        }
+
+        nav a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        section {
+            padding: 20px;
+          
+            margin: auto;
+            max-width: 800px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to show/hide sections based on the clicked link
+            function showSection(sectionId) {
+                // Hide all sections
+                var sections = document.querySelectorAll("section");
+                sections.forEach(function (section) {
+                    section.style.display = "none";
+                });
+
+                // Show the selected section
+                var selectedSection = document.getElementById(sectionId);
+                if (selectedSection) {
+                    selectedSection.style.display = "block";
+                }
+            }
+
+            // Attach click event listeners to navigation links
+            var navLinks = document.querySelectorAll("nav a");
+            navLinks.forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    // Prevent default link behavior
+                    event.preventDefault();
+
+                    // Get the target section from the href attribute
+                    var targetSectionId = link.getAttribute("href").substring(1);
+
+                    // Show the selected section
+                    showSection(targetSectionId);
+                });
+            });
+
+            // Show the default section (e.g., Profile) on page load
+            showSection("profile");
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>TURFSfinder</h1>
+    </header>
+
+    <nav style="text-align: center;">
+        <a href="#profile">Profile</a>
+        <a href="#search">posts</a>
+        <a href="#status">bookings</a>
+        <a href="#history">history</a>
+    </nav>
+
+    <section id="profile">
+        <h2>Profile</h2>
+        <fieldset>
+            
+        </fieldset>
+        <!-- Add profile content here -->
+    </section>
+
+    <section id="search" style="display: none;">
+        <h2>Search</h2>
+        <!-- Add search content here -->
+    </section>
+
+    <section id="status" style="display: none;">
+        <h2>Status</h2>
+        <!-- Add status content here -->
+    </section>
+
+    <section id="history" style="display: none;">
+        <h2>History</h2>
+        <!-- Add history content here -->
+    </section>
+
+</body>
+</html>

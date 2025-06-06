@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TURF BOOKING</title>
+</head>
+<body>
+    <video id="background-video" autoplay loop muted>
+        <source src="ruth.mp4" type="video/mp4"></video>
+
+
+
+        <div class="center">
+
+        <button class="btn" id="log">BOOK NOW</button>
+        <button class="btn" id="Rog">POST NOW</button>
+       
+   
+<script>
+// Get the button element
+const log = document.getElementById('log');
+
+// Add a click event listener
+log.addEventListener('click', function() {
+    // Redirect to the login page when the button is clicked
+    window.location.href = 'login'; // Replace 'login.html' with the URL of your login page
+});
+
+const Rog = document.getElementById('Rog');
+
+// Add a click event listener
+Rog.addEventListener('click', function() {
+    // Redirect to the login page when the button is clicked
+    window.location.href = 'ADlogin'; // Replace 'login.html' with the URL of your login page
+});
+
+
+
+
+</script>
+
+
+        </div>
+        <style>   
+    .btn{
+        margin: 50px;
+        width: 200px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 5px solid rgb(255, 255, 255);
+        color: #fff;
+        
+
+
+
+    }
+    .btn:hover {
+
+        background-color: rgb(255, 255, 255);
+        color: black;
+        font-weight: bolder;
+        cursor: pointer;
+
+
+    }
+            .center{
+                column-gap: 400px;
+                text-align: center;
+                margin: auto;
+                padding: 400px 0;
+            }
+
+
+            #background-video {
+              position: fixed;
+              top: 0;
+              left: 0;
+              min-width: 100%;
+              min-height: 100%;
+              z-index: -10;
+          }
+          
+          </style>
+
+
+</body>
+
+<div class="bot">
+    <p class="footer-text">&copy; 2023 Turf Booking. All rights reserved.</p>
+</div>
+<style>
+   .bot {
+            background-color: rgba(0, 0, 0, 0.548);
+            color: #fff;
+          padding: 3rem;
+            text-align: center;
+            position: absolute;
+           
+           margin-top: -100px;
+            width: 100%;
+        }
+
+</style>
+
+</html>

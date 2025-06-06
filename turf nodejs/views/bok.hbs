@@ -1,0 +1,50 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lumanosimo&family=Nova+Square&display=swap" rel="stylesheet">
+
+<style>
+
+    *{
+        font-family: 'Lumanosimo', cursive;
+  font-family: 'Nova Square', sans-serif;
+    margin: 0px;
+    }
+
+    .book-c{
+        background: linear-gradient(to right,#ff35275c,#ff9c5e7f);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .header{
+        background: linear-gradient(to right,#fb1f0f,#f89152);
+        border: solid;
+        text-align: center;
+        font-size: larger;
+        margin-bottom: 7px;
+    }
+    .bookmsg{
+        border: solid;
+        text-align: center;
+        background: linear-gradient(to right,#ff3527ae,#ff9c5e9f);
+        height: 200px;
+        padding: 15%;
+        text-align: center;
+        font-style: italic;
+        font-size: larger;
+    }
+</style>
+
+<div class="book-c">
+    <div class="header">
+<h1>Booking Confirmation</h1>
+    </div>
+    <div class="bookmsg">
+  
+      <p>You have successfully booked the turf "{{ bookingData.turfname}}" with Turf ID "{{bookingData.turfid}}" on {{bookingData.booking_date}} at {{bookingData.booking_time}} for {{bookingData.num_of_players}} players. Your booking was created at {{bookingData.created_at}}.</p>
+    
+  
+    
+  
+    </div>
+</div>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #d0f5fa;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+          
+        }
+
+        nav a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        section {
+            padding: 20px;
+          
+            margin: auto;
+            max-width: 800px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to show/hide sections based on the clicked link
+            function showSection(sectionId) {
+                // Hide all sections
+                var sections = document.querySelectorAll("section");
+                sections.forEach(function (section) {
+                    section.style.display = "none";
+                });
+
+                // Show the selected section
+                var selectedSection = document.getElementById(sectionId);
+                if (selectedSection) {
+                    selectedSection.style.display = "block";
+                }
+            }
+
+            // Attach click event listeners to navigation links
+            var navLinks = document.querySelectorAll("nav a");
+            navLinks.forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    // Prevent default link behavior
+                    event.preventDefault();
+
+                    // Get the target section from the href attribute
+                    var targetSectionId = link.getAttribute("href").substring(1);
+
+                    // Show the selected section
+                    showSection(targetSectionId);
+                });
+            });
+
+            // Show the default section (e.g., Profile) on page load
+            showSection("profile");
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>TURFSfinder</h1>
+    </header>
+
+    <nav style="text-align: center;">
+        <a href="#profile">Profile</a>
+        <a href="#search">Book</a>
+        <a href="#status">Status</a>
+        <a href="#history">History</a>
+    </nav>
+
+    <section id="profile">
+        
+<h1 id="name">NAME : {{userDatas.username}} </h1>
+   
+        <!-- Add profile content here -->
+
+    </section>
+
+    <section id="search" style="display: none;">
+        <form action="/dashboard" method="GET">
+    <label for="search">Search:</label>
+    <input type="text" id="search" name="search" placeholder="Search...">
+    <button type="submit">Search</button>
+  </form>
+<div class="bb">
+    <style>
+      *{
+        font-family: 'Lumanosimo', cursive;
+        
+      }
+    .card {
+      border-radius: 12px;
+     max-width: 150em;
+     flex-direction: column;
+     background: linear-gradient(to right,#ff3527,#ff9c5e);
+     border: 0;
+     box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
+     margin: 3em auto;
+     padding: 50px;
+   }
+   .card.dark {
+     color: #fff;
+   }
+   .card.card.bg-light-subtle .card-title {
+     color: dimgrey;
+   }
+   
+   .card img {
+    border-style: solid;
+    border-width: 3px;
+    border-color: #ffabab;
+     max-width: 35%;
+     margin-right: 30px;
+     padding: 0.5em;
+     border-radius: 3em;
+   }
+   .content{
+    display: flex;
+    justify-content: space-between;
+
+   }
+
+   .card-body {
+     display: flex;
+     justify-content: space-between;
+   }
+   .text-section {
+     max-width: 120%;
+     border-style: dashed;
+     border-color: hsl(4, 100%, 55%);
+     border-width: 2px;
+     border-radius: 12px;
+   }
+
+   .button-pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .7, .4, 1);
+  }
+  
+  .button-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(
+      to left,
+      hsl(5, 100%, 16%) 0%,
+      hsl(0, 76%, 45%) 8%,
+      hsl(6, 93%, 42%) 92%,
+      hsl(7, 100%, 16%) 100%
+    );
+  }
+  
+  .button-front {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: white;
+    background: hsl(13, 100%, 47%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .7, .4, 1);
+  }
+  
+  @media (min-width: 768px) {
+    .button-front {
+      font-size: 1.25rem;
+      padding: 12px 42px;
+    }
+  }
+  
+  .button-pushable:hover {
+    filter: brightness(110%);
+    -webkit-filter: brightness(110%);
+  }
+  
+  .button-pushable:hover .button-front {
+    transform: translateY(-6px);
+    transition:
+      transform
+      250ms
+      cubic-bezier(.3, .7, .4, 1.5);
+  }
+  
+  .button-pushable:active .button-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+  
+  .button-pushable:hover .button-shadow {
+    transform: translateY(4px);
+    transition:
+      transform
+      250ms
+      cubic-bezier(.3, .7, .4, 1.5);
+  }
+  
+  .button-pushable:active .button-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+  }
+  
+  .button-pushable:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+
+   .cta-section {
+     max-width: 40%;
+     margin-top: 20px;
+     margin-left: 75%;
+     
+     display: flex;
+     flex-direction: column;
+     align-items: flex-end;
+     justify-content: space-between;
+   }
+   .cta-section .button {
+
+     padding: 0.3em 0.5em;
+     /* color: #696969; */
+   }
+   
+   .card.bg-light-subtle .cta-section .btn {
+     background-color: #898989;
+     border-color: #898989;
+   }
+   @media screen and (max-width: 475px) {
+     .card {
+       font-size: 0.9em;
+     }
+   }
+   </style>
+     {{#each posts}}
+    <a id="postId" style="display: none;">{{id}}</a>
+
+      <div class="card dark">
+          <div class="content">
+            <img src="turf.jpg" class="card-img-top" alt="...">
+          
+          <div class="text-section">
+            <h1 class="card-title">{{name}}</h1>
+            <h5>{{location}}</h5>
+            <br>
+            <fieldset>
+                <p class="card-text"> {{description}}</p>
+            </fieldset>
+          </div>
+          </div>
+       <div class="card-body">
+          <div class="cta-section">
+           <div  style="margin-bottom: 10px;">{{price}} rupees per {{hours}} hours</div>
+          <a href="/book/{{id}}" class="button-pushable" role="button" onclick="handleButtonClick()">
+  <span class="button-shadow"></span>
+  <span class="button-edge"></span>
+  <span class="button-front text">Book Now</span>
+</a>
+         </div>
+       </div>
+     </div>
+     {{/each}}
+   </div>
+      
+        
+        <!-- Add search content here -->
+
+
+ 
+
+
+    </section>
+
+    <section id="status" style="display: none;">
+        <h2>Status</h2>
+        <!-- Add status content here -->
+        <div class="bax">
+    <style>
+        .box {
+            border: 1px solid black;
+            padding: 20px;
+            cursor: pointer;
+            transition: max-height 5.5s; /* Transition on max-height instead of height */
+            overflow: hidden;
+            background-color: rgb(43, 255, 0);
+        }
+
+        .details {
+            max-height: 0; /* Initially hidden */
+            overflow: hidden; /* Hide overflow content */
+            border: 3px solid black;
+            padding: 20px;
+            transition: max-height 3s; /* Transition on max-height instead of height */
+            background-color: rgba(172, 216, 12, 0.945);
+        }
+    </style>
+</head>
+<body>
+{{#each bookingData}}
+<div class="box" onclick="expandDetails({{ @index }})">
+    <h2>{{ turfname }} for {{ booking_date }} </h2>
+    <p>Turf Details</p>
+</div>
+
+<div class="details" id="details{{ @index }}">
+    <h3>More Details</h3>
+    <p>Dear {{ username }}, you have successfully booked the turf "{{ turfname }}" with Turf ID "{{ turfid }}" on {{ booking_date }} at {{ booking_time}} for {{ num_of_players }} players. Your booking was created at {{ created_at }}.</p>
+</div>
+<br><br>
+<script>
+    function expandDetails(index) {
+        var details = document.getElementById('details' + index);
+
+        if (details.style.maxHeight === '0px' || details.style.maxHeight === '') {
+            // Expand details (slide down)
+            details.style.maxHeight = '500px'; // Adjust the value based on your content
+        } else {
+            // Collapse details (slide up)
+            details.style.maxHeight = '0';
+        }
+    }
+</script>
+{{/each}}
+
+
+
+
+
+</div>
+
+
+    </section>
+
+    <section id="history" style="display: none;">
+        <h2>History</h2>
+        <!-- Add history content here -->
+    </section>
+
+</body>
+</html>

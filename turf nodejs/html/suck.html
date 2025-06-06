@@ -1,0 +1,51 @@
+<div class="bax">
+    <style>
+        .box {
+            border: 1px solid black;
+            padding: 20px;
+            cursor: pointer;
+            transition: max-height 5.5s; /* Transition on max-height instead of height */
+            overflow: hidden;
+        }
+.bax{
+    background-color: rgb(43, 255, 0);
+    
+}
+        .details {
+            max-height: 0; /* Initially hidden */
+            overflow: hidden; /* Hide overflow content */
+            border: 3px solid black;
+            padding: 20px;
+            transition: max-height 3s; /* Transition on max-height instead of height */
+            background-color: rgba(172, 216, 12, 0.945);
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" onclick="expandDetails()">
+    <h2>{{ bookingData.turfname}} for {bookingData.booking_date}} </h2>
+    <p>Turf Details</p>
+</div>
+
+<div class="details">
+    <h3>More Details</h3>
+    <p>dear {{ bookingData.username}}You have successfully booked the turf "{{ bookingData.turfname}}" with Turf ID "{{bookingData.turfid}}" on {{bookingData.booking_date}} at {{bookingData.booking_time}} for {{bookingData.num_of_players}} players. Your booking was created at {{bookingData.created_at}}.</p>
+</div>
+
+<script>
+    function expandDetails() {
+        var details = document.getElementsByClassName('details')[0];
+
+        if (details.style.maxHeight === '0px' || details.style.maxHeight === '') {
+            // Expand details (slide down)
+            details.style.maxHeight = '500px'; // Adjust the value based on your content
+        } else {
+            // Collapse details (slide up)
+            details.style.maxHeight = '0';
+        }
+    }
+</script>
+
+
+</div>

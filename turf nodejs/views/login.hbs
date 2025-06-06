@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login/Register Form</title>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  
+  .container {
+    width: 100%;
+    height: 100vh;
+    background-image: url('player.jpg');
+    overflow-x: hidden;
+  }
+  .warning{
+    color: #fff;
+    padding:10px;
+  }
+  
+  .bold{
+    color:#DC143C;
+    font-weight: bold;
+    font-size:20px;
+  }
+  .mainBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .centeredBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1100px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 3px 15px 32px 10px rgba(66, 66, 67, 0.37);
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+  }
+  
+  .toLeft {
+    position: absolute;
+    height: 500px;
+    width: 549px;
+    border-radius: 10px;
+    right: 35px;
+    animation: translateToLeft 1s 1;
+    background-color: #fff;
+    z-index: 999;
+  }
+  
+  .fakeSignupDiv {
+    position: absolute;
+    height: 500px;
+    width: 549px;
+    border-radius: 10px;
+    right: 35px;
+  }
+  
+  @keyframes translateToLeft {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(-490px);
+      display: none;
+    }
+  }
+  
+  .fakeSigninDiv {
+    position: absolute;
+    height: 500px;
+    width: 549px;
+    border-radius: 10px;
+    left: 38px;
+  }
+  
+  .toRight {
+    position: absolute;
+    height: 500px;
+    width: 549px;
+    border-radius: 10px;
+    left: 38px;
+    background-color: #fff;
+    animation: translateToRight 1s 1;
+    z-index: 999;
+  }
+  
+  @keyframes translateToRight {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(488px);
+    }
+  }
+  
+  .loginBoxVisibility {
+    display: block;
+    height: 100%;
+    width: 549px;
+    z-index: 3;
+  }
+  
+  .loginBox {
+    color:#fff;
+    height: 100%;
+    width: 549px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .signupBoxVisibility {
+    display: none;
+    height: 100%;
+    width: 549px;
+    z-index: 3;
+  }
+  
+  .signupBox {
+    height: 100%;
+    width: 549px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    
+  }
+  
+  .btn {
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    width: 80px;
+    height: 38px;
+    background: rgb(105, 135, 152);
+    cursor: pointer;
+    transition: background 2s ease;
+    color: #fff;
+  }
+  
+  .btn:hover {
+    background: rgb(215, 160, 79);
+    transform: scale(1.1);
+  }
+  
+  .btnBox {
+    padding: 20px 0;
+  }
+  
+  /*login form*/
+  
+  .loginForm {
+    height: 500px;
+    width: 549px;
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    left: 23px;
+    z-index: 1000;
+  }
+  
+  .mainLoginBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .loginVisibility {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    animation: runningInLogin 1s 1;
+  }
+  
+  .inn {
+    text-align: center;
+    width: 100%;
+    animation: runningInLogin 1s 1;
+  }
+  @keyframes runningInLogin {
+    0% {
+      transform: translateX(-80px);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+  
+    60% {
+      opacity: 1;
+    }
+  
+    70% {
+      opacity: 1;
+    }
+  
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  .outt {
+    text-align: center;
+    width: 100%;
+    animation: runningOutLogin 1s 1;
+  }
+  
+  @keyframes runningOutLogin {
+    0% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+    10% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+  
+    60% {
+      opacity: 0;
+    }
+  
+    70% {
+      opacity: 0;
+    }
+  
+    80% {
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(-1600px);
+      opacity: 0;
+    }
+  }
+  
+  .loginTitle {
+    font-size: 25px;
+  }
+  
+  .loginFormInput {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .input {
+    padding: 15px 80px;
+  }
+  
+  input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    box-shadow: 5px 7px 12px 7px #ece8e8;
+    width: 100%;
+  }
+  
+  .LoginBtn {
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    width: 80px;
+    height: 38px;
+    background: rgb(110, 97, 166);
+    cursor: pointer;
+    transition: background 2s ease;
+    color: #fff;
+  }
+  
+  .btn:hover {
+    background: rgb(151, 79, 215);
+    transform: scale(1.1);
+  }
+  
+  /*signup form*/
+  
+  .signupForm {
+    height: 500px;
+    width: 549px;
+    display: block;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    right: 22px;
+  }
+  
+  .mainSignupBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .signupVisibility {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    animation: runningInMainSignup 1s 1;
+  }
+  
+  .in {
+    text-align: center;
+    width: 100%;
+    animation: runningInMainSignup 1s 1;
+  }
+  @keyframes runningInMainSignup {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  
+    60% {
+      opacity: 1;
+    }
+  
+    70% {
+      opacity: 1;
+    }
+  
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  .out {
+    text-align: center;
+    width: 100%;
+    animation: runningOutMainSignup 1s 1;
+  }
+  
+  @keyframes runningOutMainSignup {
+    0% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+    18% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+  
+    60% {
+      opacity: 0;
+    }
+  
+    70% {
+      opacity: 0;
+    }
+  
+    80% {
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+  }
+  .signupTitle {
+    font-size: 25px;
+  }
+  
+  .signupFormInput {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .input {
+    padding: 10px 80px;
+  }
+  
+  input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    box-shadow: 5px 7px 12px 7px #ece8e8;
+    width: 100%;
+  }
+  
+  .signupBtn {
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    width: 80px;
+    height: 38px;
+    background: rgb(110, 97, 166);
+    cursor: pointer;
+    transition: background 2s ease;
+    color: #fff;
+  }
+  
+  .btn:hover {
+    background: rgb(151, 79, 215);
+    transform: scale(1.1);
+  }
+  
+  @media screen and (max-width: 1120px) {
+    .centeredBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column-reverse;
+      width: 900px;
+      height: 600px;
+      padding: 20px;
+    }
+    .loginBoxVisibility {
+      display: block;
+      height: 100%;
+      width: 100%;
+      z-index: 3;
+    }
+  
+    .loginBox {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .signupBoxVisibility {
+      display: none;
+      height: 100%;
+      width: 100%;
+      z-index: 3;
+    }
+  
+    .signupBox {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .loginForm {
+      width: 100%;
+      height: 450px;
+      display: none;
+      background-color: #fff;
+      border-radius: 10px;
+      position: relative;
+      left: 0px;
+      padding: 0;
+    }
+  
+    .mainLoginBox {
+      width: 100%;
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  
+    .loginVisibility {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      animation: runningInLogin 1s 1;
+    }
+  
+    .input {
+      padding: 15px 20px;
+    }
+  
+    .signupForm {
+      width: 100%;
+      height: 450px;
+      display: block;
+      background-color: #fff;
+      border-radius: 10px;
+      position: relative;
+      right: 0;
+      padding: 0;
+    }
+  
+    .mainSignupBox {
+      width: 100%;
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  
+    .signupVisibility {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      animation: runningInMainSignup 1s 1;
+    }
+  
+    .btnBox {
+      padding: 20px 0 0;
+    }
+  
+    input {
+      box-shadow: none;
+      border: 1px solid rgb(204, 184, 184);
+    }
+  
+    .toLeft {
+      position: absolute;
+      height: 500px;
+      width: 549px;
+      border-radius: 10px;
+      right: 35px;
+      animation: translateToLeft 1s 1;
+      background-color: #fff;
+      z-index: 999;
+    }
+  
+    .fakeSignupDiv {
+      position: absolute;
+      height: 500px;
+      width: 549px;
+      border-radius: 10px;
+      right: 35px;
+    }
+  
+    @keyframes translateToLeft {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(-490px);
+        display: none;
+      }
+    }
+  
+    .fakeSigninDiv {
+      position: absolute;
+      height: 500px;
+      width: 549px;
+      border-radius: 10px;
+      left: 38px;
+    }
+  
+    .toRight {
+      position: absolute;
+      height: 500px;
+      width: 549px;
+      border-radius: 10px;
+      left: 38px;
+      background-color: #fff;
+      animation: translateToRight 1s 1;
+      z-index: 999;
+    }
+  }</style>
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+    <div class="container">
+      <div class="warning">Please <span class="bold">refresh</span> your browser after resizing:)</div>
+        <div class="mainBox">
+            <div class="centeredBox">
+                <div class="loginBoxVisibility" id="loginBox">
+                    <div class="loginBox">
+                        <div>
+                            Already Have an Account?
+                        </div>
+                        <div class="btnBox">
+                            <button class="btn" id="signinBtn">Sign in</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <form action="/loginss" method="post">
+                <!-- Login form content -->
+
+             <div class="loginForm" id="loginFormm">
+                    <div class="mainLoginBox">
+                        <div class="loginVisibility" id="loginVisibility">
+                            <div class="loginTitle">
+                                Sign in
+                            </div>
+                            <div class="loginFormInput">
+                                <div class="input">
+                                    <input placeholder="Username" name="username" required>
+                                </div>
+
+                                <div class="input">
+                                    <input placeholder="Password" name="password" required>
+                                </div>
+                            </div>
+                            <div class="btnBox">
+                                <button class="LoginBtn">Sign in</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                </form>
+
+
+
+
+
+
+
+
+                
+                <div class="fakeSignupDiv" id="fakeSignupDiv"></div>
+                <div class="fakeSigninDiv" id="fakeSigninDiv"></div>
+                <div class="signupBoxVisibility" id="signupBox">
+                    <div class="signupBox">
+                        <div>
+                            Don't Have an Account?
+                        </div>
+                        <div class="btnBox">
+                            <button class="btn" id="signupBtn">Sign up</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <form action="/registerss" method="post">
+                <div class="signupForm" id="signupFormm"  >
+                    <div class="mainSignupBox">
+                        <div class="signupVisibility" id="signupVisibility">
+                            <div class="signupTitle">
+                                Sign up
+                            </div>
+                            <div class="signupFormInput">
+                                <div class="input">
+                                    <input placeholder="Username" name="username" required/>
+                                  </div>
+                                  <div class="input">
+                                      <input placeholder="Phone number" name="phonenumber" required >
+                                </div>
+                                <div class="input">
+                                  <input type="file" id="fileInput" name="fileInput" accept="image/*" required >
+                                  
+                                  
+                                </div>
+                                <div class="input">
+                                    <input placeholder="Password"  name="password" required/>
+                                </div>
+                                <div class="input">
+                                    <input placeholder="Confirm Password" name="conpassword" />
+                                </div>
+                            </div>
+                            <div class="btnBox">
+                                <button class="signupBtn">Sign up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<!-- partial -->
+  <script>
+      
+       
+    var signinBtn = document.getElementById("signinBtn")
+var signupBtn = document.getElementById("signupBtn")
+var loginBox = document.getElementById("loginBox")
+var signupBox = document.getElementById("signupBox")
+var loginForm = document.getElementById("loginFormm")
+var signupForm = document.getElementById("signupFormm")
+var signupVisibility = document.getElementById("signupVisibility")
+var loginVisibility = document.getElementById("loginVisibility")
+var fakeSignupDiv = document.getElementById("fakeSignupDiv")
+var fakeSigninDiv = document.getElementById("fakeSigninDiv")
+var centerBox = document.getElementsByClassName("centeredBox")[0]
+
+signinBtn.onclick = function () {
+  if (window.innerWidth > 1120) {
+    signupVisibility.setAttribute("class", "out")
+    setTimeout(() => {
+      fakeSignupDiv.setAttribute("class", "toLeft")
+      signupBox.style.display = "block"
+      signupForm.style.display = "none"
+    }, 300)
+
+    setTimeout(() => {
+      loginBox.style.display = "none"
+      loginForm.style.display = "block"
+      loginVisibility.setAttribute("class", "inn")
+      fakeSignupDiv.setAttribute("class", "")
+    }, 1300)
+  } else {
+    signupVisibility.setAttribute("class", "out")
+    setTimeout(() => {
+      centerBox.style.flexDirection = "column"
+      loginVisibility.setAttribute("class", "inn")
+      loginForm.style.display = "block"
+      signupForm.style.display = "none"
+      signupBox.style.display = "block"
+      loginBox.style.display = "none"
+    }, 500)
+  }
+}
+
+signupBtn.onclick = function () {
+  if (window.innerWidth > 1120) {
+    loginVisibility.setAttribute("class", "outt")
+    setTimeout(() => {
+      fakeSigninDiv.setAttribute("class", "toRight")
+      loginBox.style.display = "block"
+      loginForm.style.display = "none"
+    }, 300)
+
+    setTimeout(() => {
+      signupForm.style.display = "block"
+      signupBox.style.display = "none"
+      signupVisibility.setAttribute("class", "in")
+      fakeSigninDiv.setAttribute("class", "")
+    }, 1300)
+  } else {
+    loginVisibility.setAttribute("class", "out")
+    setTimeout(() => {
+      signupVisibility.setAttribute("class", "inn")
+      centerBox.style.flexDirection = "column-reverse"
+      loginForm.style.display = "none"
+      signupForm.style.display = "block"
+      signupBox.style.display = "none"
+      loginBox.style.display = "block"
+    }, 500)
+  }
+}
+  </script>
+
+</body>
+</html>
+

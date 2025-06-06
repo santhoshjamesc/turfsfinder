@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turf Booking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lumanosimo&family=Nova+Square&display=swap" rel="stylesheet">
+  
+  <style>
+*{
+  
+  font-family: 'Lumanosimo', cursive;
+  font-family: 'Nova Square', sans-serif;
+    margin: 0px;
+}
+
+.username-container{
+    background: linear-gradient(to right,#fb1f0f,#f89152);
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+    margin-bottom: 7px;
+    border-radius: 12px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    margin: auto;
+    border: solid;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(to right,#ff3527ae,#ff9c5e9f);
+}
+.user-title{
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.username {
+    color: #000000;
+}    
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.booking-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.booking-input label {
+    font-weight: bold;
+}
+
+.booking-input input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-option input {
+    margin: 0;
+}
+
+
+
+.image-container {
+   border: solid;
+   border-radius: 24px;
+   border-color: #f8f8f8;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+   border-radius: 20px;
+    width: 350px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-details {
+    text-align: center;
+}
+
+.post-details h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.post-details h5 {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.post-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+fieldset .description{
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 12px;
+  font-style: italic;
+}
+
+.post-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(13, 0, 98);
+    text-align: center;
+
+    margin: 5px;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+  
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:hover > input:checked ~ label {
+    color: #ffc700;
+}
+
+.stars label:hover,
+.stars label:hover ~ label {
+    color: #ffc700;
+}
+
+.review {
+    clear: both;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.review textarea {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+    
+.review button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+</style>
+</head>
+
+<body>
+  <fieldset>
+
+  <div class="fullpage">
+  <div class="username-container">
+    <div class="profile-container">  
+        
+        <div class="profile-description">
+            <p class="user-title">{{userDatas.username}}</p>
+            <p class="username">@{{userDatas.username}}{{userDatas.id}}</p>
+        </div>
+    </div>
+    <div class="menu-bar">
+        <i class="bi bi-three-dots"></i>
+    </div>
+</div>
+
+<div class="container">
+<div class="image-container">
+    <img src="turf.jpg" alt="...">
+</div>
+<div class="post-page">
+<div class="post-details">
+    <h3 style="display: none;">{{post.id}}</h3>
+    <h1>{{post.name}}</h1>
+    <h5>{{post.location}}</h5>
+    <br>
+    <fieldset class="description">
+        <p> {{post.description}}</p>
+    </fieldset>
+    <div class="post-price">{{post.price}} rupees per {{post.hours}} hours</div>
+</div>
+  <p style="font-size: large;">To make a call, tap the phone number below:</p>
+
+<!-- Replace "your-phone-number" with the actual phone number -->
+<a href="tel:{{post.phonenumber}}">call {{post.phonenumber}}</a>
+<a href="tel:{{post.phonenumber2}}">call {{post.phonenumber2}}</a>
+</div>
+
+    <h1>Book Your Turf</h1>
+ <form action="confirm-booking" method="post">
+    <div class="booking-form">
+        <div style="display: none;">
+        
+             <input   name="username" value="{{userDatas.username}}" required>
+              <input   name="name" value="{{post.name}}" required>
+               <input  name="number" value="{{post.id}}" required>
+        </div>
+        <div class="booking-input">
+                <input name="owner" value="{{post.username}}" readonly style="display: none;">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="booking-input">
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" name="time" oninput="setMinutesToZero(this)" required>
+        </div>
+        <div class="booking-input">
+            <label for="players">Number of Players:</label>
+            <input type="number" id="players" name="players" min="1" required>
+        </div>
+        <button type="submit">Confirm Booking</button>
+    </div>
+</form>
+
+<script>
+    function setMinutesToZero(input) {
+        // Parse the selected time
+        var selectedTime = input.value;
+        
+        // Check if minutes are not already 00
+        if (selectedTime.slice(-2) !== "00") {
+            // Set minutes to 00
+            selectedTime = selectedTime.slice(0, -2) + "00";
+            
+            // Update the input value
+            input.value = selectedTime;
+        }
+    }
+
+    function go(){
+    window.open('/bok', '_blank');
+    }
+</script>
+
+
+    </div>
+    <div class="container">
+        
+        <div class="rate">
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="text">★</label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="text">★</label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="text">★</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">★</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">★</label>
+        </div>
+        <div class="review">
+            <textarea id="review" name="review" rows="4" cols="50" placeholder="Write your review here..."></textarea>
+            <button type="submit">Submit Review</button>
+        </div>
+    </div>
+    <div class="payment-options">
+        <h2>Payment Options</h2>
+        <div class="payment-option">
+            <input type="radio" id="credit" name="payment" checked>
+            <label for="credit">Credit Card</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="debit" name="payment">
+            <label for="debit">Debit Card</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="netbanking" name="payment">
+            <label for="netbanking">Net Banking</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="cash" name="payment">
+            <label for="cash">Cash</label>
+        </div>
+    </div>
+</div>
+</div>
+</fieldset>
+</body>
+</html>
